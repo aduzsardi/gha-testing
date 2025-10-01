@@ -1,0 +1,34 @@
+name: "Build and Deploy: Staging"
+
+on:
+  pull_request:
+    types: [closed]
+    branches: [master]
+  # workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+  actions: read
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME_ROOT: ghcr.io/ahs-tech
+
+jobs:
+  release:
+    if: github.event.pull_request.merged == true || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          # Fetch all history to ensure latest commit is accessible
+          fetch-depth: 0
+          # Check out the main branch for pull requests, otherwise use the current ref
+          ref: ${{ github.event_name == 'pull_request' && 'master' || github.head_ref || github.ref_name }}
+
+      - name: Get current branch
+        run: git branch --show-current
+
