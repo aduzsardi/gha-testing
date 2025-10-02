@@ -36,6 +36,7 @@ jobs:
       - name: Print github context json
         run: echo "${{ toJson(github) }}"
 
+
       - name: Get current branch
         run: git branch --show-current
 
