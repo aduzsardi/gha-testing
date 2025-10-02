@@ -1,9 +1,9 @@
 name: "Build and Deploy: Staging"
 
 on:
-  pull_request:
-    types: [closed]
-    branches: [master]
+  # pull_request:
+  #   types: [closed]
+  #   branches: [master]
 
   workflow_dispatch:
   push:
