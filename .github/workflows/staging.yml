@@ -32,6 +32,7 @@ jobs:
           fetch-depth: 0
           # Check out the main branch for pull requests, otherwise use the current ref
           # ref: ${{ github.event_name == 'pull_request' && 'master' || github.head_ref || github.ref_name }}
+          ref: ${{ github.ref }}
 
       - name: Get current branch
         run: git branch --show-current
