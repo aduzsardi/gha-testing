@@ -32,7 +32,7 @@ jobs:
           # Fetch all history to ensure latest commit is accessible
           fetch-depth: 0
           # Check out the main branch for pull requests, otherwise use the current ref
-          ref: ${{ github.event_name == 'pull_request' && 'develop' || github.head_ref || github.ref_name }}
+          # ref: ${{ github.event_name == 'pull_request' && 'develop' || github.head_ref || github.ref_name }}
       - name: Print github context json
         run: echo "${{ toJson(github) }}"
 
