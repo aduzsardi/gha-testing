@@ -65,7 +65,7 @@ jobs:
           SLACK_CHANNEL: general
           SLACK_USERNAME: GitHub Actions
           # SLACK_ICON_EMOJI: ':ghactions:'
-          SLACK_COLOR: ${{ job.status }}
+          SLACK_COLOR: ${{ needs.build.result	 }}
           SLACK_MESSAGE: ":hammer_and_wrench: Triggered by ${{ github.actor }}"
           SLACK_TITLE: "Pipeline Status: ${{ github.repository }}"
 
