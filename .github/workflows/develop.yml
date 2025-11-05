@@ -99,6 +99,8 @@ jobs:
                 fields:
                   - type: "mrkdwn"
                     text: "*Average Rating*: 1.0"
+                  - type: "mrkdwn"
+                    text: "*Review Count*: 256"
 
       - name: Get current branch
         run: git branch --show-current
