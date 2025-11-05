@@ -58,6 +58,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Get results from previous jobs
+        id: get-results
+        run: |
+          echo "BUILD_RESULT: ${{ needs.build.result }}"
+          echo "DEPLOY_RESULT: ${{ needs.deploy.result }}"
+
       - name: Send Slack notification
         uses: rtCamp/action-slack-notify@v2
         env:
@@ -65,7 +71,7 @@ jobs:
           SLACK_CHANNEL: general
           SLACK_USERNAME: GitHub Actions
           # SLACK_ICON_EMOJI: ':ghactions:'
-          SLACK_COLOR: ${{ needs.build.result	 }}
+          SLACK_COLOR: ${{ needs.build.result	&& needs.deploy.result }}
           SLACK_MESSAGE: ":hammer_and_wrench: Triggered by ${{ github.actor }}"
           SLACK_TITLE: "Pipeline Status: ${{ github.repository }}"
 
