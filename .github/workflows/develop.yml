@@ -47,6 +47,8 @@ jobs:
           # ref: ${{ github.event_name == 'pull_request' && 'develop' || github.head_ref || github.ref_name }}
       - name: Print github context json
         run: echo "${{ toJson(github) }}"
+      - name: Print vars context json
+        run: echo "${{ toJson(vars) }}"
       - name: Print env context json
         run: echo "${{ toJson(env) }}"
       - name: Print env variables
