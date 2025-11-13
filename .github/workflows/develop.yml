@@ -24,8 +24,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Failed step
-        run: ls nonexisten/
+      # - name: Failed step
+      #   run: ls nonexisten/
+      - run: echo ${{ env.GITHUB_RUN_NUMBER }}
       - name: get job status
         if: always()
         run: echo ${{ job.status }}
