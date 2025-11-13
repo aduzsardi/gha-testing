@@ -27,7 +27,7 @@ jobs:
       # - name: Failed step
       #   run: ls nonexisten/
       
-      - run: echo ${{GITHUB_RUN_NUMBER}}
+      - run: echo ${{ GITHUB_RUN_NUMBER }}
         name: Pring github run number
       - name: get job status
         if: always()
